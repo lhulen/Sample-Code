@@ -1,0 +1,38 @@
+
+    public static String checkFieldUpdation(Map<Id,SObject>newMapRecord, String objType, String fieldSetName){
+        Boolean bErrorOccured = false;
+        String sError = '';
+        List<Schema.FieldSetMember> lstFields = new List<Schema.FieldSetMember>();
+        Map<Id,boolean> mapFieldUpdate = new Map<Id,boolean>();
+        if((!newMapRecord.isEmpty()) && (!String.isEmpty(objType)) && (!String.isEmpty(fieldSetName)))
+        {
+            Schema.SObjectType convertObjType = Schema.getGlobalDescribe().get(objType);
+            Schema.DescribeSObjectResult DescribeSObjectResultObj = convertObjType.getDescribe();
+            Schema.FieldSet convertFieldSetName = DescribeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
+            lstFields = convertFieldSetName.getFields();
+
+
+            for( Sobject newSobject : newMapRecord.values()) {
+                for(Schema.FieldSetMember fld : lstFields){
+                    if(String.Valueof(fld.getType()) == 'Boolean'){
+                        if(newSobject.get(fld.getFieldPath()) == False){
+                             bErrorOccured = true;
+                             sError += fld.getLabel()+System.Label.Pitch_Comma;
+                        }
+                    }
+                    else{
+                        if(newSobject.get(fld.getFieldPath()) == NULL){
+                            bErrorOccured = true;
+                            sError += fld.getLabel()+System.Label.Pitch_Comma;
+                        }
+                    }
+                }
+            }
+        }
+        system.debug('sErrorsError'+sError);
+        if(bErrorOccured == False){
+            return NULL;
+        }else{
+            return sError;
+        }
+    }

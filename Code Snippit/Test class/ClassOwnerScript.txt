@@ -1,0 +1,13 @@
+String csvFile = 'Name, Created By, Last Modified By\n';
+List<ApexTrigger> clsssList = [SELECT Name, Body, CreatedBy.Name, LastModifiedBy.Name FROM ApexTrigger ORDER BY Name ASC];
+for(ApexTrigger cls : clsssList){
+	csvFile += cls.Name+','+cls.CreatedBy.Name+','+cls.LastModifiedBy.Name+'\n';
+}
+Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+efa.setFileName('attachment.csv');
+efa.setBody(blob.valueOf(csvFile));
+Messaging.singleEmailMessage email = new Messaging.singleEmailMessage();
+email.setToAddresses(new List<String>{'hn@deloitte.com'});
+email.setPlainTextBody('Hi');
+email.setFileAttachments(new Messaging.EmailFileAttachment[] {efa});
+Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});

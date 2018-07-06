@@ -1,0 +1,30 @@
+    public static Boolean checkFieldUpdation(Map<Id,SObject>newMapRecord, Map<Id,sObject>oldMapRecord, String objType, String fieldSetName){
+        Boolean flagReturn = false;
+        List<Schema.FieldSetMember> lstFields = new List<Schema.FieldSetMember>();
+        if((!newMapRecord.isEmpty()) && (!oldMapRecord.isEmpty()) && (!String.isEmpty(objType)) && (!String.isEmpty(fieldSetName)))
+        {
+            Schema.SObjectType convertObjType = Schema.getGlobalDescribe().get(objType);
+            Schema.DescribeSObjectResult DescribeSObjectResultObj = convertObjType.getDescribe();
+            System.debug('Sobject -- '+DescribeSObjectResultObj.FieldSets.getMap());
+            Schema.FieldSet convertFieldSetName = DescribeSObjectResultObj.FieldSets.getMap().get(fieldSetName);
+            System.debug('Field Set Name -- '+convertFieldSetName);
+            //System.debug('List of field -- '+convertFieldSetName.getFields());
+            lstFields = convertFieldSetName.getFields();
+            System.debug('List of fields -- '+lstFields);
+            for( Sobject newSobject : newMapRecord.values()) {
+                Sobject oldSobject = oldMapRecord.get(newSobject.Id);
+                System.debug('OLD OBJECT VALUE------ '+oldSobject);
+                System.debug('New OBJECT VALUE------ '+newSobject);
+                for(Schema.FieldSetMember fld : lstFields){
+                    System.debug('FIELD PATH OF OBJECT------ '+fld.getFieldPath());
+                    if(newSobject.get(fld.getFieldPath()) != oldSobject.get(fld.getFieldPath()))
+                    {
+                        System.debug('FIELD HAS BEEN UPDATED----- '+fld.getFieldPath());
+                        flagReturn = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return flagReturn;
+    }

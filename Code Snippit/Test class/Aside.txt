@@ -1,0 +1,2 @@
+select id,Coverage,NumLinesCovered from ApexCodeCoverageAggregate
+check toolling API in Developer Console

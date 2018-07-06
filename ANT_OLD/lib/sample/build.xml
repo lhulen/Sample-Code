@@ -1,0 +1,30 @@
+<project name="SampleusageofSalesforceAnttasks" default="Renewals" basedir="C:\ANT_HOME\lib\sample" xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+<target name="retrivecode">
+<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="Renewals" unpackaged = "Renewals\package.xml"
+maxPoll = "5000"
+pollWaitMillis = "10000"/>
+</target>	
+
+<target name="validatecode">
+<sf:deploy username="${sf.usernamepsw4}" password="${sf.passwordpsw4}" serverurl="${sf.serverurlpsw1}" deployRoot="Renewals" 
+runAllTests="false"
+maxPoll = "5000"
+checkOnly = "true"
+pollWaitMillis = "10000"
+rollbackOnError = "true"
+singlePackage = "true"/>
+</target>
+
+<target name="deploycode">
+<sf:deploy username="${sf.usernamepsw4}" password="${sf.passwordpsw4}" serverurl="${sf.serverurlpsw1}" deployRoot="Renewals" 
+runAllTests="false"
+maxPoll = "5000"
+pollWaitMillis = "10000"
+rollbackOnError = "true"
+singlePackage = "true"/>
+</target>
+</project>
