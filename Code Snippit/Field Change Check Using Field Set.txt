@@ -1,4 +1,4 @@
-//
+
     public static String checkFieldUpdation(Map<Id,SObject>newMapRecord, String objType, String fieldSetName){
         Boolean bErrorOccured = false;
         String sError = '';
