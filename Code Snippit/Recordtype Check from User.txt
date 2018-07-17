@@ -1,0 +1,7 @@
+for(Schema.RecordTypeInfo rti : Pitch_Brand_Partnership__c.SObjectType.getDescribe().getRecordTypeInfos()){
+    System.debug('Record Type : ' + rti.getName() + ' - Access ' + rti.isAvailable());
+    System.debug('rti : ' + rti );
+    if(rti.isAvailable() && !rti.isMaster()) {
+       System.debug('Access for : ' + rti.getName() + ' - Access ' + rti.isAvailable());
+    }
+} 
