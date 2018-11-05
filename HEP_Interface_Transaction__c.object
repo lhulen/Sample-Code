@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>HEP; Object to store all integration transactions with respect to HEP Interface object. Each callout will have an entry on this object;abhishekmishra9@deloitte.com; 03/01/2018</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>HEP_Interface__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to interface to log callout status per integration @Nishit Kedia</description>
+        <externalId>false</externalId>
+        <label>HEP Interface</label>
+        <referenceTo>HEP_Interface__c</referenceTo>
+        <relationshipLabel>HEP Interface Transactions</relationshipLabel>
+        <relationshipName>HEP_Interface_Transactions</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Next_Retry_Time__c</fullName>
+        <description>HEP;Stores the time when the transaction is to be carried out again in case of failure;sacagarwal@deloitte.com;03/07/2018</description>
+        <externalId>false</externalId>
+        <label>Next Retry Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Object_Id__c</fullName>
+        <description>HEP;Stores primary object that is responsible for a particular transaction;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Object Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Object_Name__c</fullName>
+        <description>HEP;Stores object name that is responsible for a particular transaction;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Object Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retry_Available__c</fullName>
+        <description>Flag to check retry available for Integration @Nishit Kedia</description>
+        <externalId>false</externalId>
+        <formula>IF(Retry_Count__c  &lt;  HEP_Interface__r.Retry_Limit__c ,true,false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Retry Available</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Retry_Count__c</fullName>
+        <description>HEP;Stores the number of retry for a particular transaction;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Retry Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retry_Flag__c</fullName>
+        <description>OLd FORMULA:
+HEP_Interface__r.Retry_Flag__c &amp;&amp; ISPICKVAL(HEP_Interface__r.Record_Status__c, &apos;Active&apos;)</description>
+        <externalId>false</externalId>
+        <formula>HEP_Interface__r.Retry_Flag__c &amp;&amp; 
+
+OR((HEP_Interface__r.Create_Content_File__c &amp;&amp; NOT(ISPICKVAL(HEP_Interface__r.Type__c, &apos;Inbound&apos;))), 
+	(HEP_Interface__r.Create_Content_File__c &amp;&amp; NOT( OR(ISPICKVAL(HEP_Interface__r.Type__c, &quot;Outbound-Pull&quot;), ISPICKVAL(HEP_Interface__r.Type__c, &quot;Outbound-Push&quot;)) &amp;&amp; HEP_Interface__r.Store_Source_As_Attachment__c ==true ))) 
+
+&amp;&amp; ISPICKVAL(HEP_Interface__r.Record_Status__c, &apos;Active&apos;)</formula>
+        <label>Retry Flag</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>HEP;Stores transaction status whether call out is success or failure;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Success</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Failure</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Datetime__c</fullName>
+        <description>HEP;Stores DateTime when the transaction get initiated;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Transaction Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <label>HEP Interface Transaction</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>HEP_Interface__c</columns>
+        <columns>Object_Id__c</columns>
+        <columns>Object_Name__c</columns>
+        <columns>Retry_Available__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Today</fullName>
+        <columns>NAME</columns>
+        <columns>HEP_Interface__c</columns>
+        <columns>Object_Id__c</columns>
+        <columns>Object_Name__c</columns>
+        <columns>Retry_Available__c</columns>
+        <columns>Transaction_Datetime__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>All Today</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>IT-{0000}</displayFormat>
+        <label>HEP Interface Transaction Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>HEP Interface Transactions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Retry_Transaction</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Retry Transaction</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}  
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}  
+
+if({!HEP_Interface_Transaction__c.Retry_Flag__c} == true){
+    sforce.apex.execute(&quot;HEP_ExecuteIntegration&quot;,&quot;retryTxn&quot;,{sSourceId:&quot;{!HEP_Interface_Transaction__c.Object_Id__c}&quot;,sInterfaceTxnId:&quot;{!HEP_Interface_Transaction__c.Id}&quot;,sInterfaceName:&quot;&quot;}); 
+    location.reload(true);    
+}
+else{
+    var sErrorLabel = &apos;{!JSENCODE($Label.HEP_Retry_Not_Allowed_Error_Label)}&apos;;
+    alert(sErrorLabel);
+}</url>
+    </webLinks>
+</CustomObject>

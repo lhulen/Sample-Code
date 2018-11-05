@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>HEP; Object to store all types of interface/integration to other system outside salesforce;abhishekmishra9@deloitte.com; 03/01/2018</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Class__c</fullName>
+        <description>HEP;Stores the class name to be invoked for a particular integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Class Name To Invoke</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Create_Content_File__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>HEP;wherther content file  need to be created or not --rorai@deloitte.com;04/28/2018</description>
+        <externalId>false</externalId>
+        <label>Create Content File</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Destination__c</fullName>
+        <description>HEP;Stores the Destination for integration/Interface, This case it is Salesforce only;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Destination</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Type__c</fullName>
+        <description>HEP;Stores type/event Name for EDF for a particular integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Event Type/Event Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Framework__c</fullName>
+        <description>HEP;Stores integration/Interface framework like the type of integration;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Framework</label>
+        <picklist>
+            <picklistValues>
+                <fullName>EDF</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>REST</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Integration_Name__c</fullName>
+        <description>HEP;Stores the name of the integration;sacagarwal@deloitte.com;03/07/2018</description>
+        <externalId>false</externalId>
+        <label>Integration Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Status__c</fullName>
+        <description>HEP;Indicates whether the interface is active or not;sacagarwal@deloitte.com;03/04/2018</description>
+        <externalId>false</externalId>
+        <label>Record Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Retry_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>HEP;Indicates whether retry call out happened for a particular integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Retry Flag</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Retry_Interval__c</fullName>
+        <description>HEP;Stores the interval time for retry callouts;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Retry Interval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Retry_Limit__c</fullName>
+        <description>HEP;Stores the no.of times retry is possible for a particular integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Retry Limit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source__c</fullName>
+        <description>HEP;Stores the Source from which data will get fetched for a particular integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Source</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_Source_As_Attachment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Store Source As Attachment</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>HEP;Stores the integration type of integration/Interface;abhishekmishra9@deloitte.com;03/02/2018</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Outbound-Pull</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Outbound-Push</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Unique_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique key for the record</description>
+        <externalId>true</externalId>
+        <label>Unique Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>HEP Interface</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>Source__c</columns>
+        <columns>Destination__c</columns>
+        <columns>Class__c</columns>
+        <columns>Integration_Name__c</columns>
+        <columns>Store_Source_As_Attachment__c</columns>
+        <columns>Create_Content_File__c</columns>
+        <columns>Event_Type__c</columns>
+        <columns>Framework__c</columns>
+        <columns>Record_Status__c</columns>
+        <columns>Retry_Flag__c</columns>
+        <columns>Retry_Interval__c</columns>
+        <columns>Retry_Limit__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>HEP Interface Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>HEP Interfaces</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>HEP_Retry_Fields_Required</fullName>
+        <active>true</active>
+        <description>Validates if retry fields are populated in case retry flag is set as true</description>
+        <errorConditionFormula>(Retry_Flag__c = TRUE) &amp;&amp; (ISBLANK( Retry_Interval__c) || ISBLANK(  Retry_Limit__c ))</errorConditionFormula>
+        <errorMessage>Please set retry interval and retry limit for interface where retry is allowed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>HEP_Unique_Record_Validation</fullName>
+        <active>false</active>
+        <description>Validates if same integration record is inserted again or not</description>
+        <errorConditionFormula>and(
+Name = VLOOKUP
+($ObjectType.HEP_Interface__c.Fields.Name , $ObjectType.HEP_Interface__c.Fields.Name, Name ),
+
+not(
+Id=VLOOKUP
+($ObjectType.HEP_Interface__c.Fields.Id , $ObjectType.HEP_Interface__c.Fields.Name, Name )))</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>The new record violates uniqueness constraint on the record</errorMessage>
+    </validationRules>
+</CustomObject>
